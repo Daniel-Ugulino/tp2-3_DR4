@@ -15,7 +15,7 @@ public class ChatRequestConsumer {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @RabbitListener(queues = "chat-queue")
+    @RabbitListener(queues = "pedido-queue")
     public void receiveMessage(String message) throws JsonProcessingException {
         PedidoBookDTO pedidoBookDTO = objectMapper.readValue(message, PedidoBookDTO.class);
         bookService.updateBookAmount(pedidoBookDTO);
